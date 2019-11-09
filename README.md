@@ -1,2 +1,0 @@
-# groupBudget
-Created with CodeSandbox

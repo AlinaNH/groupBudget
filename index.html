@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>group budget</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="The web application for group budget analisys"
+    />
+    <meta name="keywords" content="group dubget analisys" />
+    <meta name="author" content="Alina Nazarovich" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+
+    <!-- Bootstrap styles -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Antic"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/groupBudget/src/styles/index.css" />
+    <link rel="stylesheet" href="/groupBudget/src/styles/styles.css" />
+
+    <!-- Page icon -->
+    <link rel="icon" href="/groupBudget/src/images/logo.png" type="image/png" />
+  </head>
+  <body class="container-fluid">
+    <!-- Logo and menu -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-8">
+            <h1 class="display-1 text-center font-weight-bold logo">
+              group budget
+            </h1>
+          </div>
+        </div>
+        <div class="container-fluid mt-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-sm-8">
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-outline-dark btn-lg mr-1 logoButton"
+                  id="signUpButton"
+                  data-toggle="modal"
+                  data-target="#signUpModal"
+                >
+                  Sign up group budget
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-dark btn-lg ml-1 logoButton"
+                  id="signInButton"
+                  data-toggle="modal"
+                  data-target="#signInModal"
+                >
+                  Sign in group budget
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Logo and menu -->
+    <!-- Modal for Sign Up -->
+    <div class="modal fade" id="signUpModal">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Sign Up</h4>
+            <button
+              type="button"
+              class="d-flex justify-content-end close"
+              data-dismiss="modal"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-12 alert alert-dark">
+                  Please, note the system supports one account for every person
+                  in the group.
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid">
+              <div class="row d-flex justify-content-center">
+                <div class="form-group col-lg-8">
+                  <form id="formForSignUp">
+                    <label for="groupEmailForSignUp">Your email:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="groupEmailForSignUp"
+                    />
+                    <br />
+                    <label for="groupPasswordForSignUp">Your password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="groupPasswordForSignUp"
+                    />
+                    <div class="row d-flex justify-content-center mt-5">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-block col-sm-4"
+                        id="submitSignUp"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div
+                    class="col-sm-12 alert alert-danger fade show d-none"
+                    id="containerForMessageSignUp"
+                  >
+                    <div id="messageForSignUp"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Modal for Sign Up -->
+    <!-- Modal for Sign In -->
+    <div class="modal fade" id="signInModal">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Sign In</h4>
+            <button
+              type="button"
+              class="d-flex justify-content-end close"
+              data-dismiss="modal"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row d-flex justify-content-center">
+                <div class="form-group col-lg-8">
+                  <form id="formForSignIn">
+                    <label for="groupEmailForSignIn">Your email:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="groupEmailForSignIn"
+                    />
+                    <br />
+                    <label for="groupPasswordForSignIn">Your password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="groupPasswordForSignIn"
+                    />
+                    <div class="row d-flex justify-content-center mt-5">
+                      <button
+                        type="button"
+                        class="btn btn-dark btn-block col-sm-4"
+                        id="submitSignIn"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid">
+              <div class="row">
+                <div
+                  class="col-sm-12 alert alert-danger fade show d-none"
+                  id="containerForMessageSignIn"
+                >
+                  <div id="messageForSignIn"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Modal for Sign In -->
+    <!-- Custom script for index.html -->
+    <script src="/groupBudget/index.js"></script>
+  </body>
+</html>

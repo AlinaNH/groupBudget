@@ -1,0 +1,44 @@
+/* index.html: logo */
+
+.logo {
+  font-size: 6vw;
+}
+
+.logoButton {
+  font-size: 1vw;
+}
+
+@media screen and (max-width: 900px) {
+  .logo {
+    font-size: 10vw;
+  }
+
+  .logoButton {
+    font-size: 3vw;
+  }
+}
+
+/* index.html // addExpenses.html // expenseTable.html: Modals */
+
+.close:hover,
+.close:focus {
+  outline: none;
+}
+
+/* budgetAnalysis.html: total */
+
+.total {
+  font-size: 4vw;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  .total {
+    font-size: 9vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .total {
+    font-size: 10vw;
+  }
+}

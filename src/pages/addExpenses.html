@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>add expenses</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="The web application for group budget analisys"
+    />
+    <meta name="keywords" content="group dubget analisys" />
+    <meta name="author" content="Alina Nazarovich" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awersome -->
+    <script
+      src="https://kit.fontawesome.com/293b39fc6b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ru.js"></script>
+
+    <!-- Bootstrap styles -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Antic"
+      rel="stylesheet"
+    />
+
+    <!-- Page icon -->
+    <link rel="icon" href="/groupBudget/src/images/logo.png" type="image/png" />
+  </head>
+  <body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <a class="navbar-brand" href="/groupBudget/index.html">
+        <i class="fas fa-calculator"></i> group budget</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/groupBudget/src/pages/addExpenses.html"
+              >add expenses</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/groupBudget/src/pages/expensesTable.html"
+              >expenses table</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="/groupBudget/src/pages/budgetAnalysis.html"
+              >budget analysis</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /Navigation -->
+    <!-- Card with form for adding expenses -->
+    <div class="container-fluid my-5 px-0">
+      <div class="row d-flex justify-content-center mt-5">
+        <div class="col-lg-8 mt-5 px-0">
+          <div class="card shadow-lg">
+            <div class="card-header bg-secondary text-white">
+              <h1>add expenses</h1>
+            </div>
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div
+                    class="col-sm-12 alert alert-danger fade show d-none"
+                    id="containerForMessage"
+                  >
+                    <div id="message"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row d-flex justify-content-center">
+                  <div class="form-group col-lg-8">
+                    <form id="formForAddingExpenses">
+                      <label for="expenseDate">Date:</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="expenseDate"
+                        required
+                      />
+                      <br />
+                      <label for="payerName">Your name:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="payerName"
+                        required
+                      />
+                      <br />
+                      <label for="expenseValue">Expense value:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="expenseValue"
+                        step="0.01"
+                        required
+                      />
+                      <br />
+                      <label for="categoryOfExpense"
+                        >Category of expense:</label
+                      >
+                      <select class="custom-select" id="categoryOfExpense">
+                      </select>
+                      <br /><br />
+                      <label for="commentForExpense">Comment:</label>
+                      <textarea
+                        class="form-control"
+                        rows="3"
+                        id="commentForExpense"
+                      ></textarea>
+                      <div class="row d-flex justify-content-center mt-5">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-block col-sm-4"
+                          id="submitExpense"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Card with form for adding expenses -->
+    <!-- Custom script for addExpenses.html -->
+    <script src="/groupBudget/src/js/utils/expensesFormHandler.js"></script>
+  </body>
+</html>
