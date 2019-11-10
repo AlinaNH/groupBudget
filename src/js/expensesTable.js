@@ -127,6 +127,18 @@ function addExpensesDataToTable() {
         td = document.createElement("td");
         dataTextNode = document.createTextNode(sortedData[data]);
         td.appendChild(dataTextNode);
+        if (moment(sortedData[data], "DD.MM.YYYY", true).isValid()) {
+          td.insertAdjacentHTML(
+            "afterbegin",
+            "<span class='hidden'>" +
+              moment(sortedData[data], "DD.MM.YYYY").format("YYYY") +
+              "/" +
+              moment(sortedData[data], "DD.MM.YYYY").format("MM") +
+              "/" +
+              moment(sortedData[data], "DD.MM.YYYY").format("DD") +
+              "</span>"
+          );
+        }
         tr.appendChild(td);
       }
       tr.insertAdjacentHTML(
