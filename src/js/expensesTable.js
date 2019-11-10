@@ -29,13 +29,24 @@ document.getElementById("tableData").addEventListener("click", function(event) {
 
 function fillUpdatingForm(dataID) {
   let expensesData = JSON.parse(localStorage.getItem("data")),
-    dataByID = {};
+    dataByID = {},
+    dateInISOFormat;
 
   for (let data in expensesData) {
     if (data === dataID) dataByID = expensesData[data];
   }
+  
+  dateInISOFormat = new Date(
+    moment(dataByID.expenseDate, "DD.MM.YYYY").format("MM") +
+      "/" +
+      moment(dataByID.expenseDate, "DD.MM.YYYY").format("DD") +
+      "/" +
+      moment(dataByID.expenseDate, "DD.MM.YYYY").format("YYYY")
+  )
+    .toISOString()
+    .slice(0, 10);
 
-  document.getElementById("expenseDate").value = dataByID.expenseDate;
+  document.getElementById("expenseDate").value = dateInISOFormat;
   document.getElementById("payerName").value = dataByID.payerName;
   document.getElementById("expenseValue").value = dataByID.expenseValue;
   document.getElementById("categoryOfExpense").value =
