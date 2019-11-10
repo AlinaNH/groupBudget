@@ -25,6 +25,12 @@
   outline: none;
 }
 
+/* expensesTable.html for correct sorting of ru date format */
+
+.hidden {
+  display: none;
+}
+
 /* budgetAnalysis.html: total */
 
 .total {
